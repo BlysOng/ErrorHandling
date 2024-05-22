@@ -1,0 +1,26 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract AgeCheck {
+    uint public minimumAge = 18;
+
+    function checkAge(uint age) public {
+        // Require check (with revert message)
+        require(age >= minimumAge, "You must be at least 18 years old");
+
+        // Business logic (simulated)
+        if (age >= minimumAge && age < 25) {
+            // Do something for young adults (18-24)
+        } else if (age >= 25) {
+            // Do something for adults (25+)
+        } else {
+            // This shouldn't happen due to require check, but...
+            revert("Unexpected age (should be 18 or older)"); // Explicit revert
+        }
+
+        // Assert check (for debugging)
+        assert(age > 0); // Shouldn't have negative ages
+    }
+}
+
+
